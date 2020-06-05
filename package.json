@@ -3,18 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "request_check.js",
-  "dependencies": {
-    "child_process": "^1.0.2",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "fs": "^0.0.1-security",
-    "mathjs": "^7.0.1",
-    "underscore": "^1.10.2"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-      "start":"node request_check.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
