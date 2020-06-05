@@ -51,14 +51,14 @@ app.post("/parser", (req, res) => {
         //       console.log("Successfully deleted the file.")
         //     }
         // })
-        if (stderr) return res.send({ status: "fail", error: stderr });
+        if (stderr) return res.send({ status: "error", output: stderr });
         res.send({ status: "success", output: stdout });
       }
     );
     // JSON.parse(stdout)
   } catch (e) {
     console.log("error", e);
-    return res.send({ status: "fail", output: e.message });
+    return res.send({ status: "error", output: e.message });
   }
 });
 
@@ -152,9 +152,11 @@ function Parser(name, codes, var_obj, filename) {
         var keys = Object.keys(var_obj);
         var result;
         for (var key of keys) {
-          var regex = new RegExp("(\\" + key + "*)", "g");
+          
+          var regex = new RegExp("(\\" + key + ")", "g");
 
           codes = codes.replace(regex, var_obj[key]);
+          console.log(codes);
         }
         codes = codes.trim();
         console.log(codes);
