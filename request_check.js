@@ -55,6 +55,8 @@ app.post('/parser', (req, res) => {
 catch(e)
 {
     console.log('error',e);
+    return res.send({status:'fail', error:e});
+    
 
 }
 }
