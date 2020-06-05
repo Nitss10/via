@@ -58,7 +58,7 @@ app.post("/parser", (req, res) => {
     // JSON.parse(stdout)
   } catch (e) {
     console.log("error", e);
-    return res.send({ status: "fail", error: e });
+    return res.send({ status: "fail", error: e.message });
   }
 });
 
