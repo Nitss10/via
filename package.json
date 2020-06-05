@@ -4,17 +4,24 @@
   "description": "",
   "main": "request_check.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node request_check.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nitss10/via.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Nitss10/via/issues"
   },
-  "homepage": "https://github.com/Nitss10/via#readme"
+  "homepage": "https://github.com/Nitss10/via#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mathjs": "^7.0.1",
+    "underscore": "^1.10.2"
+  }
 }
