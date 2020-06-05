@@ -1,4 +1,4 @@
-var port=process.env.PORT || 8080
+var port=process.env.PORT || '8080'
 const express = require('express');
 const bodyParser = require('body-parser');
 const exec = require("child_process").exec; 
@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(bodyParser.raw());
+
 app.get('/',(req,res)=>{
 res.send('hello world');
 })
@@ -48,7 +49,7 @@ app.post('/parser', (req, res) => {
         //     }
         // })
         if (stderr) return res.send({status:'fail', error:stderr})
-        res.send({status:'success', output:JSON.parse(stdout)})
+        res.send({status:'success', output:stdout})
     })
     // JSON.parse(stdout)    
 }
@@ -56,20 +57,9 @@ catch(e)
 {
     console.log('error',e);
     return res.send({status:'fail', error:e});
-    
-
 }
 }
 );
-
-
-// app.get('/list',(req,res)=>{
-//     exec("echo ls", (error, stdout, stderr) => {
-//         if (stderr) res.send({status:'fail', error:stderr})
-//         res.send({status:'success', output:stdout})
-//     })
-// })
-
 
 
 function Parser(name,codes,var_obj,filename){
