@@ -37,7 +37,6 @@ app.post('/parser', (req, res) => {
     var filename='temp.'+ext;
     console.log('Got body:', req.body);
     Parser(name,codes,var_obj,filename);
-    // res.sendStatus(200);
     cmd = name + ' ' +filename   //command to run script
     exec(cmd,{timeout:5000, maxBuffer:1024*5},(error, stdout, stderr) => {
         
@@ -56,7 +55,7 @@ app.post('/parser', (req, res) => {
 catch(e)
 {
     console.log('error',e);
-    return res.send({status:'fail', error:e});
+    return res.send({status:'fail', error:e.message});
 }
 }
 );
@@ -69,7 +68,7 @@ function Parser(name,codes,var_obj,filename){
         // fs.readFile(filename,'utf8', (err, codes) => { 
             // console.log(codes);
         if(codes.includes('require') || codes.includes('import') || codes.includes('export') || codes.includes('process')|| codes.includes('process') || codes.includes('document.write')||codes.includes('console.log'))
-            throw new Error(' contains invalid statements')
+            throw new Error('contains invalid statements')
         else
         {   
             console.log(codes);
@@ -114,10 +113,8 @@ function Parser(name,codes,var_obj,filename){
         
     
     case 'python':
-        // fs.readFile(filename,'utf8', (err, codes) => { 
-            // console.log(codes);
             if(codes.includes('import') || codes.includes('sys')||codes.includes('open')||codes.includes('.read')||codes.includes('.write')||codes.includes('.close')||codes.includes('compile()'||codes.includes('input()'))|| codes.includes('detach()')|| codes.includes('fileno()')|| codes.includes('flush()')|| codes.includes('isatty()')|| codes.includes('readable()')|| codes.includes('readline()')|| codes.includes('readlines()')|| codes.includes('seek')|| codes.includes('seekable')|| codes.includes('tell()')|| codes.includes('truncate()')|| codes.includes('writeable()')|| codes.includes('write')|| codes.includes('writelines()')|| codes.includes('print('))
-            throw new Error(' contains invalid statements')
+            throw new Error('contains invalid statements')
         else
             {   console.log(codes);
                 const python_regex = /(?=["'])(?:"[^"\\]*(?:\\[\s\S][^"\\]*)*"|'[^'\\]*(?:\\[\s\S][^'\\]*)*')|(#.*$)/gm;
