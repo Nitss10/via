@@ -72,6 +72,11 @@ function Parser(name,codes,var_obj,filename){
             throw new Error(' contains invalid statements')
         else
         {   
+            console.log(codes);
+            const node_regex=/\/\*[\s\S]*?\*\/|\/\/.*/g;
+            codes=codes.replace(node_regex,'');
+            console.log(codes);
+            
             console.log('javascript');
             var keys = Object.keys(var_obj);
             for (var key of keys) {
@@ -114,7 +119,10 @@ function Parser(name,codes,var_obj,filename){
             if(codes.includes('import') || codes.includes('sys')||codes.includes('open')||codes.includes('.read')||codes.includes('.write')||codes.includes('.close')||codes.includes('compile()'||codes.includes('input()'))|| codes.includes('detach()')|| codes.includes('fileno()')|| codes.includes('flush()')|| codes.includes('isatty()')|| codes.includes('readable()')|| codes.includes('readline()')|| codes.includes('readlines()')|| codes.includes('seek')|| codes.includes('seekable')|| codes.includes('tell()')|| codes.includes('truncate()')|| codes.includes('writeable()')|| codes.includes('write')|| codes.includes('writelines()')|| codes.includes('print('))
             throw new Error(' contains invalid statements')
         else
-            {   
+            {   console.log(codes);
+                const python_regex = /(?=["'])(?:"[^"\\]*(?:\\[\s\S][^"\\]*)*"|'[^'\\]*(?:\\[\s\S][^'\\]*)*')|(#.*$)/gm;
+                codes=codes.replace(python_regex,'');
+                console.log(codes);
                 console.log('python');
                 var keys = Object.keys(var_obj);
                 var result;
