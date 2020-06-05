@@ -1,3 +1,4 @@
+var port=process.env.PORT || 8080
 const express = require('express');
 const bodyParser = require('body-parser');
 const exec = require("child_process").exec; 
@@ -202,4 +203,4 @@ function Parser(name,codes,var_obj,filename){
 
 // app.use(bodyParser.raw());
 
-app.listen(8080, () => console.log(`Started server at http://localhost:8080!`));
+app.listen(port, () => console.log(`Started server at http://localhost:8080!`));
