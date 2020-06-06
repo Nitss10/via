@@ -86,7 +86,7 @@ function Parser(name, codes, var_obj, filename) {
         console.log("javascript");
         var keys = Object.keys(var_obj);
         for (var key of keys) {
-          var regex = new RegExp("(\\" + key + "*)", "g");
+          var regex = new RegExp("(\\" + key + ")", "g");
 
           codes = codes.replace(regex, var_obj[key]);
         }
@@ -209,7 +209,7 @@ function Parser(name, codes, var_obj, filename) {
         var keys = Object.keys(var_obj);
         var result;
         for (var key of keys) {
-          var regex = new RegExp("(\\" + key + "*)", "g");
+          var regex = new RegExp("(\\" + key + ")", "g");
 
           codes = codes.replace(regex, var_obj[key]);
         }
